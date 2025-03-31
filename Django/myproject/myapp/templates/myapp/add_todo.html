@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Add Todo</title>
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'styles/add_todo.css' %}"
+    />
+  </head>
+  <body>
+    <h1>새 할 일 추가</h1>
+    <form method="POST">
+      {% csrf_token %}
+      <label for="task">할 일:</label>
+      <input type="text" id="task" name="task" />
+      <button type="submit">추가</button>
+    </form>
+    <a href="{% url 'todo_list' %}">할 일 목록으로 돌아가기</a>
+  </body>
+</html>

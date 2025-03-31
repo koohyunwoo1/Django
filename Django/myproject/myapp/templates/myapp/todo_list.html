@@ -1,0 +1,33 @@
+<!-- myapp/templates/myapp/todo_list.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Todo List</title>
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'styles/todo_list.css' %}"
+    />
+  </head>
+  <body>
+    <h1>Todo List</h1>
+    <ul>
+      {% for todo in todos %}
+      <li
+        class="{% if todo.completed %}completed{% else %}incomplete{% endif %}"
+      >
+        {{ todo.task }} - {% if todo.completed %}완료{% else %}미완료{% endif %}
+        <br />
+        생성일: {{ todo.created_at|date:"Y-m-d H:i" }}
+      </li>
+
+      {% endfor %}
+    </ul>
+    <footer>
+      <a href="{% url 'add_todo' %}">새 할 일 추가</a>
+    </footer>
+  </body>
+</html>
